@@ -1,0 +1,70 @@
+# Criar o diretório do projeto
+
+# Iniciar o projeto com npm init ou npm -y 
+## O primeiro apresentará algumas configurações iniciais e o segundo cria as configurações automaticamente
+
+# Instalar o typescript 
+## Se não tiver instalado no computador instalar com o comando: npm install -g typescript 
+## Caso já tenha inicie o arquivo de configuração no projeto com o comando: tsc --init 
+
+# Criar as pastas iniciais: dist e src 
+# # Na pasta src srão criados os arquivos javascript e na pasta dir ficarão os arquivos compilados para typescript 
+# Na pasta src criar o arquivo index.ts 
+
+# Configurar o arquivo tsconfig.json 
+## Alterar o target para es16 
+## Configurar os diretórios conforme abaixo: 
+ ## "rootDir": "./src", - define a pasta do projeto
+ ## "outDir": "./dist" - pasta final do projeto
+ ## "moduleResolution": "node"
+
+# Instalação de dependências
+## nmp install --save-dev @types/node 
+## npm install --save-dev @types/express @types/mustache-express @types/node
+
+# Deixar o typescript monitorando as alterações 
+## Executar o comando em um terminal: tsc -w
+## Em outro terminal rodar o programa com o comando node dist/index.js 
+
+# Criando atalhos para execução do projeto 
+## No arquivo de configuração package.json em scripts adicione o comando: "start": "node dist/index.js"
+## Para executar o projeto digite: npm run start ou npm start 
+
+# Instalar o nodemon: npm install -g nodemaon
+# Instalar a biblioteca typescript com o nodemon: npm install -g ts-node
+
+# Criando o servidor
+## npm install express
+## npm install @types/express (mudar o script para src/server.ts)
+
+# Configurando node para digitar códigos HTML
+## Instalar a biblioteca Mustache: npm install mustache-express
+## Installar as dependências: npm install --save-dev @types/mustache-express
+## Modificar o sript para monitorar alterações em extensão .mustache: "start": "nodemon -e ts,json,mustache src/server.ts"
+
+# Configuração de porta e servidor
+## npm install dotenv
+## Realizar o import: import dotenv from 'dotenv' no arquivo server.ts;
+## Incluir a configuração do dotenv: dotenv.config() no arquivo server.ts;
+## Alterar o arquivos server.ts na última linha para: server.listen(process.env.PORT);
+
+# Deploy da aplicação
+## Verificar a versão do Node com o comando: node -v
+## Abrir o arquivo package.json e incluir uma nova opção o seguinte comando: "engines":{ ### "node": "16.x" }
+### Criar um arquivo sem extensão na raiz do projeto de nome Procfile
+### Incluir nesse arquivo o seguinte nconteúdo: web: npm start
+### Incluir no package.json o script: "start": "node dist/server.js
+### incluir no package.json em script a seguinte linha: "postinstall": "npm run tsc && copyfiles -u 1 src/**/*.mustache dist/"
+### Incluir no package.json o script: "tsc": "tsc"
+
+# Instalar a dependência copyfilkes com o comando: npm install --save-dev copyfiles
+
+# Na pasta do projeto executar o comando: npm run postinstall
+
+# Baixar o Heroku CLI
+## Se não estiver logado efetuar o login com o comando: heroku login
+## git add .
+## git commit -m "commit"
+## git push heroku main
+
+
